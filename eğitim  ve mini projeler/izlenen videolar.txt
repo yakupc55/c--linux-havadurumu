@@ -2,3 +2,6 @@
 
 ***************** Qt tanıtım - Neden Qt - Qt Kurulum  ***************
 link: https://www.youtube.com/watch?v=ZJ2QASgGvO8&list=PLOl6SW8nLgJzyGthQmsSikrsgspkym-ig&index=2&t=0s
+
+***************** Qt Creator Kullanımı - Proje Oluşturma  ***************
+link: https://www.youtube.com/watch?v=f-uq-tMIqPg&list=PLOl6SW8nLgJzyGthQmsSikrsgspkym-ig&index=5&t=0s
