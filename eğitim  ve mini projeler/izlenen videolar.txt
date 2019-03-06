@@ -14,3 +14,9 @@ link: https://www.youtube.com/watch?v=kLaOeyPYv8g
 
 ***************** Qt Kaynak Dosya Sistemi - Projeye İkon Ekleme  ***************
 link: https://www.youtube.com/watch?v=_IVXJ98JUMw
+
+***************** Qt Designer ile Signal-Slot Bağlantısı  ***************
+link: https://www.youtube.com/watch?v=ssrER__xEus
+
+***************** Kod Yazarak Signal-Slot Bağlantısı  ***************
+link: https://www.youtube.com/watch?v=CYY_j7-e9k4
