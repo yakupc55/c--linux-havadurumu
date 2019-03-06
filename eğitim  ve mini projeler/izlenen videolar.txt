@@ -1,0 +1,4 @@
+############################## Qt temel videolar ##############################
+
+***************** Qt tanıtım - Neden Qt - Qt Kurulum  ***************
+link: https://www.youtube.com/watch?v=ZJ2QASgGvO8&list=PLOl6SW8nLgJzyGthQmsSikrsgspkym-ig&index=2&t=0s
