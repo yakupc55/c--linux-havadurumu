@@ -1,7 +1,16 @@
 ############################## Qt temel videolar ##############################
 
 ***************** Qt tanıtım - Neden Qt - Qt Kurulum  ***************
-link: https://www.youtube.com/watch?v=ZJ2QASgGvO8&list=PLOl6SW8nLgJzyGthQmsSikrsgspkym-ig&index=2&t=0s
+link: https://www.youtube.com/watch?v=ZJ2QASgGvO8
 
 ***************** Qt Creator Kullanımı - Proje Oluşturma  ***************
-link: https://www.youtube.com/watch?v=f-uq-tMIqPg&list=PLOl6SW8nLgJzyGthQmsSikrsgspkym-ig&index=5&t=0s
+link: https://www.youtube.com/watch?v=f-uq-tMIqPg
+
+***************** Qt Designer Kullanımı - Dinamik Arayüz Oluşturma  ***************
+link: https://www.youtube.com/watch?v=oMsXS80qctI
+
+***************** Qt Style Sheets Kullanımı - Özel Tasarım  ***************
+link: https://www.youtube.com/watch?v=kLaOeyPYv8g
+
+***************** Qt Kaynak Dosya Sistemi - Projeye İkon Ekleme  ***************
+link: https://www.youtube.com/watch?v=_IVXJ98JUMw
