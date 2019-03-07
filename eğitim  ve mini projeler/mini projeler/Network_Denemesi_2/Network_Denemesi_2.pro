@@ -1,15 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-03-06T13:23:22
+# Project created by QtCreator 2019-03-07T07:52:01
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT += network
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = json_parse
+TARGET = Network_Denemesi_2
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,8 +23,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 CONFIG += c++11
-CONFIG += console
-CONFIG -= app_bundle
 
 SOURCES += \
         main.cpp \
@@ -37,9 +34,6 @@ HEADERS += \
 FORMS += \
         mainwindow.ui
 
-# install
-target.path = $$[QT_INSTALL_EXAMPLES]/network/download
-INSTALLS += targe
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
