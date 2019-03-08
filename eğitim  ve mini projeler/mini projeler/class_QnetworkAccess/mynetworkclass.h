@@ -3,7 +3,7 @@
 
 #include <QtCore/QObject>
 #include <QtCore/qglobal.h>
-#include <QtNetwork/QNetworkAccessManager>
+#include <QNetworkAccessManager>
 #include <QNetworkReply>
 class myNetworkClass : public QObject
 {

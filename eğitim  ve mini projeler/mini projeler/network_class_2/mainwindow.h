@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include "ui_mainwindow.h"
-#include "mynetworkclass.h"
+#include "downloader.h"
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
   Q_OBJECT
@@ -13,12 +13,10 @@ public:
 protected:
   void changeEvent(QEvent *e);
 private slots:
-  void datalnDaHouse(QByteArray data);
-  void on_pushButton_clicked();
-
+    void readJson(QString veri);
 private:
-  Ui::MainWindow *ui;
-  myNetworkClass theDon;
+    Ui::MainWindow *ui;
+    Downloader *downloader; // Объявляем объект класса для скачивания данных по http
 };
 
 #endif // MAINWINDOW_H

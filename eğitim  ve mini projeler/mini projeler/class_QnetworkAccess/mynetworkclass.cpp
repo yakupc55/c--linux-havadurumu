@@ -1,8 +1,8 @@
 #include "mynetworkclass.h"
-
+#include <QDebug>
 myNetworkClass::myNetworkClass(QObject *parent) : QObject(parent)
 {
-  connect(qnam,SIGNAL(finished(QNetworkReply*)),this,SLOT(readRead(QNetworkReply*)));
+  connect(qnam,&QNetworkAccessManager::finished,this,&myNetworkClass::readRead);
 }
 
 void myNetworkClass::makeRequest(QString endPointRequest)
@@ -13,4 +13,6 @@ void myNetworkClass::makeRequest(QString endPointRequest)
 void myNetworkClass::readRead(QNetworkReply *reply){
   QByteArray myData;
   myData = reply->readAll();
+  qDebug() << myData;
+  emit(dataReadyRead(myData));
 }
