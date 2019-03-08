@@ -20,8 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 void MainWindow::readJson(QString veri)
 {
 
-    qDebug() << "read file";
-    qDebug() <<veri;
+//    qDebug() <<veri;
     ui->textBrowser->setText(veri);
 }
 

@@ -16,7 +16,7 @@ private slots:
     void readJson(QString veri);
 private:
     Ui::MainWindow *ui;
-    Downloader *downloader; // Объявляем объект класса для скачивания данных по http
+    Downloader *downloader; // json verisi download edecek sınıfımız
 };
 
 #endif // MAINWINDOW_H
