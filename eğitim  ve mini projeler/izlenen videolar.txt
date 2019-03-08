@@ -23,3 +23,27 @@ link: https://www.youtube.com/watch?v=CYY_j7-e9k4
 
 ***************** qDebug() Fonksiyonu - Konsol Ekranına Çıktı  ***************
 link: https://www.youtube.com/watch?v=p3wU1e0zkmw
+
+
+############################## Projeye yönelik videolar #############################
+
+***************** C++ Qt QThread işlemleri-1  ***************
+link: https://www.youtube.com/watch?v=iCJab6ijdrI
+
+***************** Qt уроки #19. Скачивание файла по HTTP с помощью   ***************
+link: https://www.youtube.com/watch?v=JiRO9zDDJ8A
+
+***************** C++ Qt 64 - QHttp download files from the web with ease ***************
+link: https://www.youtube.com/watch?v=dw50MnqH-Qo
+
+***************** QT Creator 04 Using Network Access Manager to make Get request  ***************
+link: https://www.youtube.com/watch?v=vpJkf1l2Fo4
+
+***************** Lets Learn: Using QNetworkAccessManager With A GUI ***************
+link: https://www.youtube.com/watch?v=_gSC60y8woA
+
+***************** C++ QT QThread işlemleri-2 ***************
+link: https://www.youtube.com/watch?v=hsC0qa793vkoA
+
+***************** C++ Qt 122 - QtConcurrent Run a thread with signals and slots ***************
+link: https://www.youtube.com/watch?v=tvpC8UrPpZ4

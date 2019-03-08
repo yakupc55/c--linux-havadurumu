@@ -14,12 +14,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -29,9 +28,9 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QLabel *label;
-    QTextBrowser *textBrowser;
-    QPushButton *pushButton;
+    QPushButton *btnStart;
+    QPushButton *btnStop;
+    QLineEdit *lineEdit;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -40,22 +39,22 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(619, 326);
+        MainWindow->resize(400, 300);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(30, 40, 201, 171));
-        textBrowser = new QTextBrowser(centralWidget);
-        textBrowser->setObjectName(QStringLiteral("textBrowser"));
-        textBrowser->setGeometry(QRect(370, 50, 256, 192));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(440, 20, 80, 25));
+        btnStart = new QPushButton(centralWidget);
+        btnStart->setObjectName(QStringLiteral("btnStart"));
+        btnStart->setGeometry(QRect(50, 20, 80, 25));
+        btnStop = new QPushButton(centralWidget);
+        btnStop->setObjectName(QStringLiteral("btnStop"));
+        btnStop->setGeometry(QRect(200, 20, 80, 25));
+        lineEdit = new QLineEdit(centralWidget);
+        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        lineEdit->setGeometry(QRect(30, 60, 331, 25));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 619, 22));
+        menuBar->setGeometry(QRect(0, 0, 400, 22));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -72,8 +71,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        label->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", Q_NULLPTR));
+        btnStart->setText(QApplication::translate("MainWindow", "start", Q_NULLPTR));
+        btnStop->setText(QApplication::translate("MainWindow", "stop", Q_NULLPTR));
     } // retranslateUi
 
 };
