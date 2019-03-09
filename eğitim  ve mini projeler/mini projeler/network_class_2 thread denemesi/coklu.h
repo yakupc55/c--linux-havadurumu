@@ -1,5 +1,5 @@
-#ifndef DOWNLOADER_H
-#define DOWNLOADER_H
+#ifndef COKLU_H
+#define COKLU_H
 
 #include <QtCore/qglobal.h>
 #include <QNetworkAccessManager>
@@ -9,22 +9,22 @@
 #include <QUrl>
 #include <QDebug>
 #include <QThread>
-class Downloader : public QThread
+class coklu : public QThread
 {
     Q_OBJECT
 public:
-    explicit Downloader();
+    explicit coklu();
 
 signals:
     void onReady(QString veri); // gelen json verisini gönderdiğimiz sınıfımız.
-
+    void on_number(QString name,int number);
 public slots:
-    void getData();     // datayı alma kararırı verdiğimiz slotumuz
+    void getDatam();     // datayı alma kararırı verdiğimiz slotumuz
     void onResult(QNetworkReply *reply);    // sonuçların ulaştığı slotumuz
-    void getVeri(QString veri);
+
 private:
     QNetworkAccessManager *manager; // Network işlerini yapacak nesneyi oluşturduk
 };
 
 
-#endif // DOWNLOADER_H
+#endif // COKLU_H

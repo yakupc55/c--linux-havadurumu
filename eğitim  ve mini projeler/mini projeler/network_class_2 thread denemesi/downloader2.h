@@ -9,11 +9,11 @@
 #include <QUrl>
 #include <QDebug>
 #include <QThread>
-class Downloader : public QThread
+class Downloader2 : public QThread
 {
     Q_OBJECT
 public:
-    explicit Downloader();
+    explicit Downloader2();
 
 signals:
     void onReady(QString veri); // gelen json verisini gönderdiğimiz sınıfımız.
@@ -21,7 +21,7 @@ signals:
 public slots:
     void getData();     // datayı alma kararırı verdiğimiz slotumuz
     void onResult(QNetworkReply *reply);    // sonuçların ulaştığı slotumuz
-    void getVeri(QString veri);
+
 private:
     QNetworkAccessManager *manager; // Network işlerini yapacak nesneyi oluşturduk
 };

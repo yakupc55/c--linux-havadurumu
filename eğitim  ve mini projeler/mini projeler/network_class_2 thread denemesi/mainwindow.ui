@@ -44,6 +44,19 @@ p, li { white-space: pre-wrap; }
      <string>Json verisi al</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="cokluistek">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>80</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>coklu</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

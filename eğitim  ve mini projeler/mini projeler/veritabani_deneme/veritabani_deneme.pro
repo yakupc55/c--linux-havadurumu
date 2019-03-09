@@ -1,14 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-03-08T06:25:38
+# Project created by QtCreator 2019-03-09T14:14:10
 #
 #-------------------------------------------------
 
-QT       += core gui network concurrent
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = network_class_thread
+TARGET = veritabani_deneme
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -26,16 +26,10 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    downloader.cpp \
-    mythread.cpp \
-    coklu.cpp
+        mainwindow.cpp
 
 HEADERS += \
-        mainwindow.h \
-    downloader.h \
-    mythread.h \
-    coklu.h
+        mainwindow.h
 
 FORMS += \
         mainwindow.ui

@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include "ui_mainwindow.h"
-#include "downloader.h"
+
 class MainWindow : public QMainWindow, private Ui::MainWindow
 {
   Q_OBJECT
@@ -12,13 +12,6 @@ public:
 
 protected:
   void changeEvent(QEvent *e);
-private slots:
-    void readJson(QString veri);
-    void on_cokluistek_clicked();
-
-private:
-    Ui::MainWindow *ui;
-    Downloader *downloader; // json verisi download edecek sınıfımız
 };
 
 #endif // MAINWINDOW_H

@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CONCURRENT_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../network_class_2\ thread\ denemesi -I. -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../network_class_2\ thread\ denemesi -I. -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -38,7 +38,7 @@ DISTNAME      = network_class_thread1.0.0
 DISTDIR = /home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim\ \ ve\ mini\ projeler/mini\ projeler/build-network_class_2_thread-Desktop_Qt_5_9_7_GCC_64bit-Debug/.tmp/network_class_thread1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Concurrent -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -53,16 +53,20 @@ OBJECTS_DIR   = ./
 SOURCES       = ../network_class_2\ thread\ denemesi/main.cpp \
 		../network_class_2\ thread\ denemesi/mainwindow.cpp \
 		../network_class_2\ thread\ denemesi/downloader.cpp \
-		../network_class_2\ thread\ denemesi/mythread.cpp moc_mainwindow.cpp \
+		../network_class_2\ thread\ denemesi/mythread.cpp \
+		../network_class_2\ thread\ denemesi/coklu.cpp moc_mainwindow.cpp \
 		moc_downloader.cpp \
-		moc_mythread.cpp
+		moc_mythread.cpp \
+		moc_coklu.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		downloader.o \
 		mythread.o \
+		coklu.o \
 		moc_mainwindow.o \
 		moc_downloader.o \
-		moc_mythread.o
+		moc_mythread.o \
+		moc_coklu.o
 DIST          = /home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/common/unix.conf \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/common/linux.conf \
@@ -246,10 +250,12 @@ DIST          = /home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/features/lex.prf \
 		../network_class_2 thread denemesi/network_class_2_thread.pro ../network_class_2\ thread\ denemesi/mainwindow.h \
 		../network_class_2\ thread\ denemesi/downloader.h \
-		../network_class_2\ thread\ denemesi/mythread.h ../network_class_2\ thread\ denemesi/main.cpp \
+		../network_class_2\ thread\ denemesi/mythread.h \
+		../network_class_2\ thread\ denemesi/coklu.h ../network_class_2\ thread\ denemesi/main.cpp \
 		../network_class_2\ thread\ denemesi/mainwindow.cpp \
 		../network_class_2\ thread\ denemesi/downloader.cpp \
-		../network_class_2\ thread\ denemesi/mythread.cpp
+		../network_class_2\ thread\ denemesi/mythread.cpp \
+		../network_class_2\ thread\ denemesi/coklu.cpp
 QMAKE_TARGET  = network_class_thread
 DESTDIR       = 
 TARGET        = network_class_thread
@@ -446,6 +452,7 @@ Makefile: ../network_class_2\ thread\ denemesi/network_class_2_thread.pro /home/
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Widgets.prl \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Gui.prl \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Network.prl \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Concurrent.prl \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Core.prl
 	$(QMAKE) -o Makefile ../network_class_2\ thread\ denemesi/network_class_2_thread.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 /home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/features/spec_pre.prf:
@@ -633,6 +640,7 @@ Makefile: ../network_class_2\ thread\ denemesi/network_class_2_thread.pro /home/
 /home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Widgets.prl:
 /home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Gui.prl:
 /home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Network.prl:
+/home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Concurrent.prl:
 /home/yakup/Qt5.9.7/5.9.7/gcc_64/lib/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../network_class_2\ thread\ denemesi/network_class_2_thread.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
@@ -649,8 +657,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../network_class_2\ thread\ denemesi/mainwindow.h ../network_class_2\ thread\ denemesi/downloader.h ../network_class_2\ thread\ denemesi/mythread.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../network_class_2\ thread\ denemesi/main.cpp ../network_class_2\ thread\ denemesi/mainwindow.cpp ../network_class_2\ thread\ denemesi/downloader.cpp ../network_class_2\ thread\ denemesi/mythread.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../network_class_2\ thread\ denemesi/mainwindow.h ../network_class_2\ thread\ denemesi/downloader.h ../network_class_2\ thread\ denemesi/mythread.h ../network_class_2\ thread\ denemesi/coklu.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../network_class_2\ thread\ denemesi/main.cpp ../network_class_2\ thread\ denemesi/mainwindow.cpp ../network_class_2\ thread\ denemesi/downloader.cpp ../network_class_2\ thread\ denemesi/mythread.cpp ../network_class_2\ thread\ denemesi/coklu.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../network_class_2\ thread\ denemesi/mainwindow.ui $(DISTDIR)/
 
 
@@ -683,9 +691,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_downloader.cpp moc_mythread.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_downloader.cpp moc_mythread.cpp moc_coklu.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_downloader.cpp moc_mythread.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_downloader.cpp moc_mythread.cpp moc_coklu.cpp
 moc_mainwindow.cpp: ui_mainwindow.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QVariant \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qvariant.h \
@@ -870,10 +878,13 @@ moc_mainwindow.cpp: ui_mainwindow.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QIODevice \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QFile \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h \
+		../network_class_2\ thread\ denemesi/coklu.h \
 		../network_class_2\ thread\ denemesi/mainwindow.h \
 		moc_predefs.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc
-	/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++ -I'/home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim  ve mini projeler/mini projeler/network_class_2 thread denemesi' -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../network_class_2\ thread\ denemesi/mainwindow.h -o moc_mainwindow.cpp
+	/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++ -I'/home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim  ve mini projeler/mini projeler/network_class_2 thread denemesi' -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../network_class_2\ thread\ denemesi/mainwindow.h -o moc_mainwindow.cpp
 
 moc_downloader.cpp: /home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig-bootstrapped.h \
@@ -970,12 +981,68 @@ moc_downloader.cpp: /home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfile.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfiledevice.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h \
 		../network_class_2\ thread\ denemesi/downloader.h \
 		moc_predefs.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc
-	/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++ -I'/home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim  ve mini projeler/mini projeler/network_class_2 thread denemesi' -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../network_class_2\ thread\ denemesi/downloader.h -o moc_downloader.cpp
+	/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++ -I'/home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim  ve mini projeler/mini projeler/network_class_2 thread denemesi' -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../network_class_2\ thread\ denemesi/downloader.h -o moc_downloader.cpp
 
-moc_mythread.cpp: /home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
+moc_mythread.cpp: /home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QObject \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobject.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtcore-config.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlogging.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qflags.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmutex.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstring.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qchar.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlist.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qiterator.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qpair.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qregexp.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h \
+		../network_class_2\ thread\ denemesi/mythread.h \
+		moc_predefs.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc
+	/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++ -I'/home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim  ve mini projeler/mini projeler/network_class_2 thread denemesi' -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../network_class_2\ thread\ denemesi/mythread.h -o moc_mythread.cpp
+
+moc_coklu.cpp: /home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtcore-config.h \
@@ -1070,10 +1137,12 @@ moc_mythread.cpp: /home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfile.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfiledevice.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
-		../network_class_2\ thread\ denemesi/mythread.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h \
+		../network_class_2\ thread\ denemesi/coklu.h \
 		moc_predefs.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc
-	/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++ -I'/home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim  ve mini projeler/mini projeler/network_class_2 thread denemesi' -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../network_class_2\ thread\ denemesi/mythread.h -o moc_mythread.cpp
+	/home/yakup/Qt5.9.7/5.9.7/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/mkspecs/linux-g++ -I'/home/yakup/Masaüstü/projeler/c--linux-havadurumu/eğitim  ve mini projeler/mini projeler/network_class_2 thread denemesi' -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtWidgets -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtGui -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent -I/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../network_class_2\ thread\ denemesi/coklu.h -o moc_coklu.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1278,7 +1347,10 @@ main.o: ../network_class_2\ thread\ denemesi/main.cpp ../network_class_2\ thread
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork/qnetworkreply.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QIODevice \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QFile \
-		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h \
+		../network_class_2\ thread\ denemesi/coklu.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../network_class_2\ thread\ denemesi/main.cpp
 
 mainwindow.o: ../network_class_2\ thread\ denemesi/mainwindow.cpp ../network_class_2\ thread\ denemesi/mainwindow.h \
@@ -1465,7 +1537,138 @@ mainwindow.o: ../network_class_2\ thread\ denemesi/mainwindow.cpp ../network_cla
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtNetwork/qnetworkreply.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QIODevice \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QFile \
-		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h \
+		../network_class_2\ thread\ denemesi/coklu.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QJsonArray \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qjsonarray.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qjsonvalue.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QJsonDocument \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qjsondocument.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QJsonObject \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qjsonobject.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QJsonValue \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QFuture \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfuture.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfutureinterface.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qrunnable.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qexception.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qresultstore.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/QtConcurrent \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/QtConcurrentDepends \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QtCore \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QtCoreDepends \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qabstractanimation.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qabstractproxymodel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qabstractstate.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qabstracttransition.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qanimationgroup.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qarraydataops.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qarraydatapointer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbasictimer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbitarray.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbuffer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbytearraymatcher.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcache.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcollator.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcommandlineoption.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcommandlineparser.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qdeadlinetimer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qelapsedtimer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qdir.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfileinfo.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qdiriterator.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qeasingcurve.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qendian.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qeventtransition.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfactoryinterface.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfileselector.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QStringList \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfilesystemwatcher.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfinalstate.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfuturesynchronizer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfuturewatcher.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qhistorystate.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qidentityproxymodel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qisenum.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlibrary.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlibraryinfo.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qversionnumber.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlinkedlist.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlockfile.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qloggingcategory.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmath.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmessageauthenticationcode.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmetaobject.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmimedata.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmimedatabase.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmimetype.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobjectcleanuphandler.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qoperatingsystemversion.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qparallelanimationgroup.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qpauseanimation.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qplugin.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qpointer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qpluginloader.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qprocess.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qpropertyanimation.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qvariantanimation.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qqueue.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qreadwritelock.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qresource.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsavefile.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qscopedvaluerollback.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsemaphore.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsettings.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsharedmemory.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsignalmapper.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsignaltransition.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsocketnotifier.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsortfilterproxymodel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstack.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstandardpaths.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstate.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstatemachine.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstorageinfo.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstringlistmodel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsystemsemaphore.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtemporarydir.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QScopedPointer \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtemporaryfile.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtextboundaryfinder.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtextcodec.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthreadpool.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthreadstorage.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtimeline.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtimer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtimezone.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtranslator.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtypetraits.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/quuid.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qwaitcondition.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qwineventnotifier.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qxmlstream.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtcoreversion.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentcompilertest.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrent_global.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentexception.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentfilter.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentfilterkernel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentiteratekernel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentmedian.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentthreadengine.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentmapkernel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentreducekernel.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentfunctionwrappers.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentmap.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentrun.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentrunbase.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentstoredfunctioncall.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtConcurrent/qtconcurrentversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../network_class_2\ thread\ denemesi/mainwindow.cpp
 
 downloader.o: ../network_class_2\ thread\ denemesi/downloader.cpp ../network_class_2\ thread\ denemesi/downloader.h \
@@ -1563,10 +1766,79 @@ downloader.o: ../network_class_2\ thread\ denemesi/downloader.cpp ../network_cla
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QFile \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfile.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfiledevice.h \
-		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o downloader.o ../network_class_2\ thread\ denemesi/downloader.cpp
 
 mythread.o: ../network_class_2\ thread\ denemesi/mythread.cpp ../network_class_2\ thread\ denemesi/mythread.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QObject \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobject.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qnamespace.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtcore-config.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsysinfo.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlogging.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qflags.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmutex.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qnumeric.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qversiontagging.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstring.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qchar.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbytearray.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qrefcount.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qarraydata.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlist.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qalgorithms.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qiterator.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qpair.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstringlist.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qregexp.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcoreevent.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmetatype.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qobject_impl.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qdebug.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qhash.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qmap.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qtextstream.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qiodevice.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qlocale.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qvariant.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qshareddata.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qvector.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qpoint.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qset.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qsharedpointer_impl.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mythread.o ../network_class_2\ thread\ denemesi/mythread.cpp
+
+coklu.o: ../network_class_2\ thread\ denemesi/coklu.cpp ../network_class_2\ thread\ denemesi/coklu.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qglobal.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qconfig.h \
@@ -1661,8 +1933,10 @@ mythread.o: ../network_class_2\ thread\ denemesi/mythread.cpp ../network_class_2
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QFile \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfile.h \
 		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qfiledevice.h \
-		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mythread.o ../network_class_2\ thread\ denemesi/mythread.cpp
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QDebug \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/QThread \
+		/home/yakup/Qt5.9.7/5.9.7/gcc_64/include/QtCore/qthread.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o coklu.o ../network_class_2\ thread\ denemesi/coklu.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
@@ -1672,6 +1946,9 @@ moc_downloader.o: moc_downloader.cpp
 
 moc_mythread.o: moc_mythread.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mythread.o moc_mythread.cpp
+
+moc_coklu.o: moc_coklu.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_coklu.o moc_coklu.cpp
 
 ####### Install
 

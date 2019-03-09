@@ -1,0 +1,30 @@
+#include "mainwindow.h"
+#include <QtSql>
+#include <QDebug>
+MainWindow::MainWindow(QWidget *parent) :
+  QMainWindow(parent)
+{
+  setupUi(this);
+  QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE"); // bu sqllite ile ilgili işlem yapmasını sağlıyor
+  db.setDatabaseName("/home/yakup/Masaüstü/projeler/c--linux-havadurumu/veritabanları/deneme1.sqlite");
+  db.open();
+
+  if(db.isOpen()){
+      qDebug()<< "DB Opened";
+    }
+  else{
+      qDebug() << "DB not opened"<<db.lastError(); // burda hatayı consola bas diyoruz
+    }
+}
+
+void MainWindow::changeEvent(QEvent *e)
+{
+  QMainWindow::changeEvent(e);
+  switch (e->type()) {
+    case QEvent::LanguageChange:
+      retranslateUi(this);
+      break;
+    default:
+      break;
+    }
+}
