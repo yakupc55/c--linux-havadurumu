@@ -1,14 +1,14 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2019-03-09T14:14:10
+# Project created by QtCreator 2019-03-10T07:51:59
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui network sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = veritabani_deneme
+TARGET = proje_bitmis_hali
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -27,17 +27,16 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    login.cpp \
+    baglanti.cpp \
     downloader.cpp
 
 HEADERS += \
         mainwindow.h \
-    login.h \
+    baglanti.h \
     downloader.h
 
 FORMS += \
-        mainwindow.ui \
-    form.ui
+        mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

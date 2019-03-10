@@ -47,3 +47,5 @@ link: https://www.youtube.com/watch?v=hsC0qa793vkoA
 
 ***************** C++ Qt 122 - QtConcurrent Run a thread with signals and slots ***************
 link: https://www.youtube.com/watch?v=tvpC8UrPpZ4
+
+son izlenen videoların buraya eklenme işlemi yapılmadı.

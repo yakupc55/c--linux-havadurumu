@@ -1,7 +1,7 @@
 
 #include "downloader.h"
 
-Downloader::Downloader()
+Downloader::Downloader(QObject *parent) : QObject(parent)
 {
     // manager sınıfımızı oluşturuyoruz
     manager = new QNetworkAccessManager();
@@ -14,14 +14,6 @@ void Downloader::getData()
 {
   //  qDebug() << "Start";
     QUrl url("http://api.apixu.com/v1/current.json?key=7d01bbfa3fca46268ca62722190703&q=Ankara"); // URL, к которому будем получать данные
-    QNetworkRequest request;    // Ağ Erişimi API'sinin bir parçasıdır ve ağ üzerinden bir istek göndermek için gereken bilgileri içeren sınıftır. Bir URL ve isteği değiştirmek için kullanılabilecek bazı yardımcı bilgiler içerir.
-    request.setUrl(url);        // istenen url ye yönelik bir request nesnesi oluşturduk
-    manager->get(request);      // request nesnemizi managerde işleme aldık
-}
-void Downloader::getVeri(QString tip, QString veri)
-{
-  //  qDebug() << "Start";
-    QUrl url("http://api.apixu.com/v1/current.json?key=7d01bbfa3fca46268ca62722190703&q="+veri); // URL, к которому будем получать данные
     QNetworkRequest request;    // Ağ Erişimi API'sinin bir parçasıdır ve ağ üzerinden bir istek göndermek için gereken bilgileri içeren sınıftır. Bir URL ve isteği değiştirmek için kullanılabilecek bazı yardımcı bilgiler içerir.
     request.setUrl(url);        // istenen url ye yönelik bir request nesnesi oluşturduk
     manager->get(request);      // request nesnemizi managerde işleme aldık
